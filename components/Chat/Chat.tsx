@@ -26,7 +26,7 @@ export const Chat: FC<Props> = ({ model, messages, loading, onSend, onSelect }) 
 
   return (
     <div className="h-full flex flex-col">
-      {messages.length === 0 ? (
+      {messages?.length === 0 ? (
         <>
           <div className="flex justify-center pt-8">
             <ModelSelect
@@ -42,7 +42,7 @@ export const Chat: FC<Props> = ({ model, messages, loading, onSend, onSelect }) 
           <div className="flex-1 overflow-auto">
             <div className="text-center py-3 dark:bg-[#434654] dark:text-neutral-300 text-neutral-500 text-sm border border-b-neutral-300 dark:border-none">Model: {OpenAIModelNames[model]}</div>
 
-            {messages.map((message, index) => (
+            {messages?.map((message, index) => (
               <div key={index}>
                 <ChatMessage message={message} />
               </div>

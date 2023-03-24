@@ -6,11 +6,19 @@ export const config = {
 };
 
 const handler = async (req: Request): Promise<Response> => {
+  if (req.method !== "POST") {
+    return new Response("Method Not Allowed", { status: 405 });
+  }
+
   try {
     const { model, messages } = (await req.json()) as {
       model: OpenAIModel;
       messages: Message[];
     };
+
+    if (!model || !messages || !Array.isArray(messages)) {
+      return new Response("Invalid Request Body", { status: 400 });
+    }
 
     const charLimit = 12000;
     let charCount = 0;
@@ -29,8 +37,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     return new Response(stream);
   } catch (error) {
-    console.error(error);
-    return new Response("Error", { status: 500 });
+    console.error("Error:", error.message);
+    return new Response("Internal Server Error", { status: 500 });
   }
 };
 
