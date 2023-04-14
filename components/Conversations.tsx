@@ -23,7 +23,7 @@ export const Conversations: FC<Props> = ({ conversations, selectedConversation, 
 						className="mr-2 min-w-[20px]"
 						size={18}
 					/>
-					<div className="overflow-hidden whitespace-nowrap overflow-ellipsis pr-1">{conversation.messages[0] ? conversation.messages[0].content : "Empty conversation"}</div>
+					<div className="overflow-hidden whitespace-nowrap overflow-ellipsis pr-1">{conversation.message.filter((message) => message.role !== "system")[0] ? conversation.message.filter((message) => message.role !== "system")[0]  : "Empty conversation"}</div>
 
 					<IconTrash
 						className="ml-auto min-w-[20px] text-neutral-400 hover:text-neutral-100"
