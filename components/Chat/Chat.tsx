@@ -9,6 +9,7 @@ interface Props {
   model: OpenAIModel;
   conversation: Conversation;
   lightMode: "light" | "dark";
+  onModelChange: (model: OpenAIModel) => void;
   messages: Message[];
   loading: boolean;
   onSend: (message: Message) => void;
