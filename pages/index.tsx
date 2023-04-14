@@ -188,6 +188,7 @@ export default function Home() {
 						model={model}
 						messages={selectedConversation.messages.filter((message) => message.role !== "system")}
 						onSend={handleSend}
+            onSelect={() => {}}
 						loading={loading}
 						onModelChange={(model: OpenAIModel) => setModel(model)}
 					/>
