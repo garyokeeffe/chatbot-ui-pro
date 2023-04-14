@@ -8,6 +8,7 @@ import { ChatMessage } from "./ChatMessage";
 interface Props {
   model: OpenAIModel;
   conversation: Conversation;
+  lightMode: "light" | "dark";
   messages: Message[];
   loading: boolean;
   onSend: (message: Message) => void;
