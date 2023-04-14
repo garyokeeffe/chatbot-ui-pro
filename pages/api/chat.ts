@@ -37,14 +37,12 @@ const handler = async (req: Request): Promise<Response> => {
 
     return new Response(stream);
   } catch (error) {
-      if (error instanceof Error) {
-        console.error("Error:", error.message);
-      } else {
-        console.error("Error:", error);
-      }
-      return new Response("Internal Server Error", { status: 500 });
+    if (error instanceof Error) {
+      console.error("Error:", error.message);
+    } else {
+      console.error("Error:", error);
     }
-    
+    return new Response("Internal Server Error", { status: 500 });
   }
 };
 
