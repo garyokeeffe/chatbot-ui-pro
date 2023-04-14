@@ -1,4 +1,4 @@
-import { Message, OpenAIModel, OpenAIModelNames } from "@/types";
+import { Message, OpenAIModel, OpenAIModelNames, Conversation } from "@/types";
 import { FC, useEffect, useRef } from "react";
 import { ModelSelect } from "../ModelSelect";
 import { ChatInput } from "./ChatInput";
