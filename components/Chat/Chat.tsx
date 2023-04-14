@@ -7,6 +7,7 @@ import { ChatMessage } from "./ChatMessage";
 
 interface Props {
   model: OpenAIModel;
+  conversation: Conversation;
   messages: Message[];
   loading: boolean;
   onSend: (message: Message) => void;
