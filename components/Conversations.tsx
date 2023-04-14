@@ -4,7 +4,7 @@ import { FC } from "react";
 
 interface Props {
 	conversations: Conversation[];
-	selectedConversation: Conversation;
+	selectedConversation?: Conversation;
 	onSelectConversation: (conversation: Conversation) => void;
 	onDeleteConversation: (conversation: Conversation) => void;
 }
