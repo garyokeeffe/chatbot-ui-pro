@@ -14,7 +14,9 @@ interface Props {
   onDeleteConversation: (conversation: Conversation) => void;
 }
 
+
 export const Sidebar: FC<Props> = ({ conversations, lightMode, selectedConversation, onNewConversation, onToggleLightMode, onSelectConversation, onDeleteConversation }) => {
+	const themeClass = lightMode === "light" ? "orange-theme" : "black-theme";
   return (
     <div className="flex flex-col bg-[#202123] min-w-[260px]">
       <div className="flex items-center justify-center h-[60px]">

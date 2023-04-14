@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.orange-theme {
+  background-color: orange;
+  color: black;
+}
+
+.black-theme {
+  background-color: black;
+  color: orange;
+}

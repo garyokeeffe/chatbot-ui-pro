@@ -35,7 +35,7 @@ export const Chat: FC<Props> = ({ model, messages, loading, onSend, onSelect }) 
             />
           </div>
 
-          <div className="flex-1 text-4xl text-center text-neutral-300 pt-[280px]">Chatbot UI Pro</div>
+          <div className="flex-1 text-4xl text-center text-neutral-300 pt-[280px]">ChatBTC</div>
         </>
       ) : (
         <>
