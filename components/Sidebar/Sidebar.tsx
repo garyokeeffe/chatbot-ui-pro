@@ -7,7 +7,7 @@ import { SidebarSettings } from "./SidebarSettings";
 interface Props {
   conversations: Conversation[];
   lightMode: "light" | "dark";
-  selectedConversation: Conversation;
+  selectedConversation?: Conversation;
   onNewConversation: () => void;
   onToggleLightMode: (mode: "light" | "dark") => void;
   onSelectConversation: (conversation: Conversation) => void;
