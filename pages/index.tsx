@@ -162,7 +162,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={`h-screen ${lightMode === "light" ? "bg-white" : "bg-black"} relative`}>
-        <div className="flex">
+        <div className="flex items-stretch">
           <Sidebar
             conversations={conversations}
             selectedConversation={selectedConversation}

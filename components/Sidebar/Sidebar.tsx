@@ -20,8 +20,14 @@ export const Sidebar: FC<Props> = ({ conversations, lightMode, selectedConversat
   const buttonHoverColor = lightMode === "light" ? "hover:bg-orange-600" : "hover:bg-gray-800";
 
   return (
+    <div className={`h-screen flex flex-col space-y-2 ${themeClass}`}>
     <div className={`flex flex-col min-w-[260px] ${themeClass}`}>
+      
       <div className={`flex items-center justify-center h-[60px] ${themeClass}`}>
+      <SidebarSettings
+        lightMode={lightMode}
+        onToggleLightMode={onToggleLightMode}
+      />
         <button
           className={`flex items-center w-[240px] h-[40px] rounded-lg ${buttonBgColor} border border-neutral-600 text-sm ${buttonHoverColor}`}
           onClick={onNewConversation}
@@ -44,10 +50,9 @@ export const Sidebar: FC<Props> = ({ conversations, lightMode, selectedConversat
         />
       </div>
 
-      <SidebarSettings
-        lightMode={lightMode}
-        onToggleLightMode={onToggleLightMode}
-      />
+      
+    </div>
     </div>
   );
+  
 };
