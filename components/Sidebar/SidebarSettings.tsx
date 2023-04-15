@@ -11,8 +11,8 @@ interface Props {
 export const SidebarSettings: FC<Props> = ({ className,lightMode, onToggleLightMode }) => {
 	const themeClass = lightMode === "light" ? "bg-orange-500" : "bg-black";
 	return (
-    <div className={`${className} flex items-center justify-between p-4`}>
-	  <div className={`flex flex-col items-center border-t border-neutral-500 py-4 ${themeClass}`}>
+    <div className={`w-full ${className} ${themeClass} flex items-center justify-between py-4 pb-4`}>
+	  <div className={`flex flex-col items-center border-t border-neutral-500 py-4 pb-4 ${themeClass}`}>
       <SidebarButton
         lightMode={lightMode}
         text={lightMode === "light" ? "Light Mode" : "Dark Mode"}
