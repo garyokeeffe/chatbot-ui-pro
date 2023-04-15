@@ -12,8 +12,8 @@ export const ChatMessage: FC<Props> = ({ message, lightMode }) => {
     ? lightMode === "light" ? "bg-neutral-100" : "dark:bg-[#f9f9fa]"
     : lightMode === "light" ? "dark:bg-black" : "";
   const textColor = isAssistant
-    ? "text-neutral-900 dark:text-neutral-100"
-    : "text-neutral-700 dark:text-neutral-300";
+    ? "text-orange-500 dark:text-orange-500"
+    : "text-neutral-600 dark:text-neutral-50";
   const borderColor = isAssistant && lightMode === "light" ? "border border-neutral-300" : "dark:border-none";
 
   return (
