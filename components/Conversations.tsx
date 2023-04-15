@@ -18,6 +18,8 @@ export const Conversations: FC<Props> = ({
   lightMode,
 }) => {
   const themeClass = lightMode === "light" ? "orange-theme" : "black-theme";
+  const buttonBgColor = lightMode === "light" ? "bg-orange-500" : "bg-black";
+  const buttonHoverColor = lightMode === "light" ? "hover:bg-orange-600" : "hover:bg-gray-800";
 
   return (
     <div className={`flex flex-col space-y-2 ${themeClass}`}>
@@ -26,8 +28,8 @@ export const Conversations: FC<Props> = ({
           key={index}
           className={`flex items-center justify-start w-[240px] h-[40px] px-2 text-sm rounded-lg cursor-pointer ${
             selectedConversation && selectedConversation.id === conversation.id
-              ? "bg-neutral-600"
-              : "bg-neutral-500 hover:bg-neutral-400"
+              ? `${buttonBgColor} border border-neutral-600`
+              : `bg-neutral-500 ${buttonHoverColor}`
           }`}
           onClick={() => onSelectConversation(conversation)}
         >
