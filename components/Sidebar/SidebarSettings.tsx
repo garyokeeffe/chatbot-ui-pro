@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const SidebarSettings: FC<Props> = ({ lightMode, onToggleLightMode }) => {
-	const themeClass = lightMode === "light" ? "bg-orange-400" : "bg-black";
+	const themeClass = lightMode === "light" ? "bg-orange-500" : "bg-black";
 	return (
 	  <div className={`flex flex-col items-center border-t border-neutral-500 py-4 ${themeClass}`}>
       <SidebarButton
