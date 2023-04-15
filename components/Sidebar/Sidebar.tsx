@@ -38,6 +38,7 @@ export const Sidebar: FC<Props> = ({ conversations, lightMode, selectedConversat
           selectedConversation={selectedConversation}
           onSelectConversation={onSelectConversation}
           onDeleteConversation={onDeleteConversation}
+          lightMode={lightMode}
         />
       </div>
 
