@@ -47,7 +47,7 @@ export const Chat: FC<Props> = ({ model, messages, loading, onSend, onSelect }) 
 
             {messages?.map((message, index) => (
               <div key={index}>
-                <ChatMessage message={message} />
+                <ChatMessage message={message} lightMode={lightMode} />
               </div>
             ))}
             {loading && <ChatLoader />}
