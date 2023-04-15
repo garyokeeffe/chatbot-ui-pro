@@ -9,7 +9,7 @@ interface Props {
 
 export const SidebarButton: FC<Props> = ({ text, lightMode, icon, onClick }) => {
   const textColor = lightMode === "light" ? "bg-orange-500" : "bg-black";
-  const borderColor = lightMode === "light" ? "border-orange-500" : "border-black";
+  const borderColor = lightMode === "light" ? "border-black" : "border-orange-500";
   const hoverBgColor = lightMode === "light" ? "hover:bg-black" : "hover:bg-orange-500";
   const hoverTextColor = lightMode === "light" ? "hover:text-orange-500" : "hover:text-black";
 
