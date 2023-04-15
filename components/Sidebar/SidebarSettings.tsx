@@ -8,8 +8,9 @@ interface Props {
 }
 
 export const SidebarSettings: FC<Props> = ({ lightMode, onToggleLightMode }) => {
-  return (
-    <div className={`flex flex-col items-center border-t border-neutral-500 py-4`}>
+	const themeClass = lightMode === "light" ? "bg-orange-500" : "bg-black";
+	return (
+	  <div className={`flex flex-col items-center border-t border-neutral-500 py-4 ${themeClass}`}>
       <SidebarButton
         lightMode={lightMode}
         text={lightMode === "light" ? "Light Mode" : "Dark Mode"}
@@ -19,4 +20,3 @@ export const SidebarSettings: FC<Props> = ({ lightMode, onToggleLightMode }) => 
     </div>
   );
 };
-
