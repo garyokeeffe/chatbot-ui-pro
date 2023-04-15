@@ -164,7 +164,7 @@ export default function Home() {
       </Head>
       <div className={`h-screen ${lightMode === "light" ? "bg-white" : "bg-black"} relative`}>
       <div className="flex flex-col h-full">
-        <div className="flex-1 flex items-stretch">
+        <div className="flex-1 flex items-stretch max-h-full overflow-y-auto">
           <Sidebar
             conversations={conversations}
             selectedConversation={selectedConversation}
