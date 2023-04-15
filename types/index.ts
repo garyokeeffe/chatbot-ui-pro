@@ -4,7 +4,7 @@ export enum OpenAIModel {
 }
 
 export const OpenAIModelNames: Record<OpenAIModel, string> = {
-  [OpenAIModel.GPT_3_5]: "chatGPTINA",
+  [OpenAIModel.GPT_3_5]: "gpTINA",
   // [OpenAIModel.GPT_4]: "GPT-4"
 };
 
