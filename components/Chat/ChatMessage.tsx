@@ -9,9 +9,9 @@ interface Props {
 export const ChatMessage: FC<Props> = ({ message, lightMode }) => {
   const isAssistant = message.role === "assistant";
   const bgColor = isAssistant
-    ? lightMode === "light" ? "bg-neutral-100" : "dark:bg-[#434654]"
-    : lightMode === "light" ? "dark:bg-[#343541]" : "";
-  const textColor = isAssistant ? "text-neutral-900" : "dark:text-white";
+    ? lightMode === "light" ? "bg-neutral-100" : "dark:bg-orange"
+    : lightMode === "light" ? "dark:bg-black" : "";
+  const textColor = isAssistant ? "text-neutral-900" : "dark:text-orange";
   const borderColor = isAssistant && lightMode === "light" ? "border border-neutral-300" : "dark:border-none";
 
   return (
