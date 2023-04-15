@@ -5,18 +5,19 @@ interface Props {
 }
 
 export const Footer: FC<Props> = ({ lightMode }) => {
-  const textColor = lightMode === "light" ? "text-blue-500" : "text-blue-300";
-  const hoverColor = lightMode === "light" ? "hover:text-blue-600" : "hover:text-blue-400";
+  const textColor = lightMode === "light" ? "text-black" : "text-white";
+  const hoverColor = lightMode === "light" ? "hover:text-gray-800" : "hover:text-gray-300";
+  const bgColor = lightMode === "light" ? "bg-orange-200" : "bg-orange-500";
 
   return (
-    <div className="flex h-[30px] sm:h-[50px] border-t border-neutral-300 py-2 px-8 items-center sm:justify-between justify-center">
+    <div className={`flex h-[30px] sm:h-[50px] py-2 px-8 items-center sm:justify-between justify-center ${bgColor}`}>
       <a
         href="https://twitter.com/garyjokeeffe"
         target="_blank"
         rel="noopener noreferrer"
-        className={`${textColor} ${hoverColor}`}
+        className={`text-center ${textColor} ${hoverColor}`}
       >
-        Follow me on Twitter
+        Send me bugs on Twitter!
       </a>
     </div>
   );
