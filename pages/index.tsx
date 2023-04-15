@@ -156,44 +156,47 @@ export default function Home() {
 	}, []);
 
 	return (
-		<>
-			<Head>
-				<title>satGPT</title>
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
-			<div className={`h-screen ${lightMode === "light" ? "bg-white" : "bg-black"} relative`}>
-				<Sidebar
-					conversations={conversations}
-					selectedConversation={selectedConversation}
-					onNewConversation={handleNewConversation}
-					onSelectConversation={(conversation: Conversation) => {
-  setSelectedConversation(conversation);
-  safeLocalStorage("set", "selectedConversation", JSON.stringify(conversation));
-}}
-					onToggleLightMode={handleLightMode}
-					onDeleteConversation={(conversation: Conversation) => {
-						const updatedConversations = [...conversations];
-    const index = updatedConversations.findIndex(c => c.id === conversation.id);
-    updatedConversations.splice(index, 1);
-    setConversations(updatedConversations);
-    safeLocalStorage('set', 'conversationHistory', JSON.stringify(updatedConversations));
-    setSelectedConversation(undefined);}}
-
-					lightMode={lightMode}
-				/>
-				{selectedConversation && (
-					<Chat
-						conversation={selectedConversation}
-						lightMode={lightMode}
-						model={model}
-						messages={selectedConversation.messages.filter((message) => message.role !== "system")}
-						onSend={handleSend}
-            onSelect={() => {}}
-						loading={loading}
-						onModelChange={(model: OpenAIModel) => setModel(model)}
-					/>
-				)}
-			</div>
-		</>
-	);
+    <>
+      <Head>
+        <title>satGPT</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className={`h-screen ${lightMode === "light" ? "bg-white" : "bg-black"} relative`}>
+        <div className="flex">
+          <Sidebar
+            conversations={conversations}
+            selectedConversation={selectedConversation}
+            onNewConversation={handleNewConversation}
+            onSelectConversation={(conversation: Conversation) => {
+              setSelectedConversation(conversation);
+              safeLocalStorage("set", "selectedConversation", JSON.stringify(conversation));
+            }}
+            onToggleLightMode={handleLightMode}
+            onDeleteConversation={(conversation: Conversation) => {
+              const updatedConversations = [...conversations];
+              const index = updatedConversations.findIndex(c => c.id === conversation.id);
+              updatedConversations.splice(index, 1);
+              setConversations(updatedConversations);
+              safeLocalStorage('set', 'conversationHistory', JSON.stringify(updatedConversations));
+              setSelectedConversation(undefined);
+            }}
+            lightMode={lightMode}
+          />
+          {selectedConversation && (
+            <Chat
+              conversation={selectedConversation}
+              lightMode={lightMode}
+              model={model}
+              messages={selectedConversation.messages.filter((message) => message.role !== "system")}
+              onSend={handleSend}
+              onSelect={() => {}}
+              loading={loading}
+              onModelChange={(model: OpenAIModel) => setModel(model)}
+            />
+          )}
+        </div>
+      </div>
+    </>
+  );
+  
 }
