@@ -25,6 +25,7 @@ export const Sidebar: FC<Props> = ({ conversations, lightMode, selectedConversat
 
       <div className={`flex flex-col items-center space-y-2 pb-2 ${themeClass}`}>
           <SidebarSettings
+            className="w-full"
             lightMode={lightMode}
             onToggleLightMode={onToggleLightMode}
           />

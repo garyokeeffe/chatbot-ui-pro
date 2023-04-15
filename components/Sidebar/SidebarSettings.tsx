@@ -4,12 +4,14 @@ import { SidebarButton } from "./SidebarButton";
 
 interface Props {
   lightMode: "light" | "dark";
+  className?: string;
   onToggleLightMode: (mode: "light" | "dark") => void;
 }
 
-export const SidebarSettings: FC<Props> = ({ lightMode, onToggleLightMode }) => {
+export const SidebarSettings: FC<Props> = ({ className,lightMode, onToggleLightMode }) => {
 	const themeClass = lightMode === "light" ? "bg-orange-500" : "bg-black";
 	return (
+    <div className={`${className} flex items-center justify-between p-4`}>
 	  <div className={`flex flex-col items-center border-t border-neutral-500 py-4 ${themeClass}`}>
       <SidebarButton
         lightMode={lightMode}
@@ -17,6 +19,7 @@ export const SidebarSettings: FC<Props> = ({ lightMode, onToggleLightMode }) => 
         icon={lightMode === "light" ? <IconMoon /> : <IconSun />}
         onClick={() => onToggleLightMode(lightMode === "light" ? "dark" : "light")}
       />
+    </div>
     </div>
   );
 };
