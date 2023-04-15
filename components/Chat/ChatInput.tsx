@@ -63,6 +63,9 @@ export const ChatInput: FC<Props> = ({ onSend }) => {
         >
           <IconSend size={18} />
         </button>
+        <p className="text-center mt-2 text-sm text-blue-500">
+        Made by <a href="https://twitter.com/garyjokeeffe" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">Gary O'Keeffe</a>
+      </p>
       </div>
     </div>
   );
