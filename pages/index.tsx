@@ -158,7 +158,7 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>ChatBTC</title>
+				<title>satGPT</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div className={`h-screen ${lightMode === "light" ? "bg-white" : "bg-black"} relative`}>

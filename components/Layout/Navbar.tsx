@@ -15,7 +15,7 @@ export const Navbar: FC<Props> = ({ lightMode }) => {
           className="ml-2 hover:opacity-50"
           href="https://code-scaffold.vercel.app"
         >
-          ChatBTC
+          satGPT
         </a>
       </div>
     </div>
