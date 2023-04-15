@@ -29,8 +29,8 @@ export const Conversations: FC<Props> = ({
           key={index}
           className={`flex items-center justify-start w-[240px] h-[40px] px-2 text-sm rounded-lg cursor-pointer ${
             selectedConversation && selectedConversation.id === conversation.id
-              ? `${buttonBgColor} border border-neutral-600`
-              : `${buttonBgColorSecondary} ${buttonHoverColor}`
+              ? `${buttonBgColorSecondary} border border-neutral-600`
+              : `${buttonBgColor} border border-neutral-600 ${buttonHoverColor}`
           }`}
           onClick={() => onSelectConversation(conversation)}
         >
