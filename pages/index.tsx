@@ -1,4 +1,5 @@
 import { Chat } from "@/components/Chat/Chat";
+import { Footer } from "@/components/Layout/Footer";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { Conversation, Message, OpenAIModel } from "@/types";
 import Head from "next/head";
@@ -196,6 +197,7 @@ export default function Home() {
           )}
         </div>
       </div>
+      <Footer lightMode={lightMode} />
     </>
   );
   
