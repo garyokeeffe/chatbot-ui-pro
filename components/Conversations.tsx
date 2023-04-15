@@ -19,8 +19,8 @@ export const Conversations: FC<Props> = ({
 }) => {
   const themeClass = lightMode === "light" ? "orange-theme" : "black-theme";
   const buttonBgColor = lightMode === "light" ? "bg-orange-500" : "bg-black";
-  const buttonBgColorSecondary = lightMode === "light" ? "bg-orange-300" : "bg-gray-400";
-  const buttonHoverColor = lightMode === "light" ? "hover:bg-orange-600" : "hover:bg-gray-800";
+  const buttonBgColorSecondary = lightMode === "light" ? "bg-orange-400" : "bg-gray-800";
+  const buttonHoverColor = lightMode === "light" ? "hover:bg-orange-600" : "hover:bg-gray-900";
 
   return (
     <div className={`flex flex-col space-y-2 ${themeClass}`}>
