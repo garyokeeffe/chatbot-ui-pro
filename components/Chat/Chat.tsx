@@ -56,7 +56,7 @@ export const Chat: FC<Props> = ({ model, messages, lightMode, loading, onSend, o
         </>
       )}
 
-      <div className="w-[800px] mx-auto flex-shrink-0">
+      <div className="flex-shrink-0 mx-auto w-full max-w-[800px]">
         <ChatInput onSend={onSend} />
       </div>
     </div>
