@@ -14,14 +14,16 @@ interface Props {
   onDeleteConversation: (conversation: Conversation) => void;
 }
 
-
 export const Sidebar: FC<Props> = ({ conversations, lightMode, selectedConversation, onNewConversation, onToggleLightMode, onSelectConversation, onDeleteConversation }) => {
-	const themeClass = lightMode === "light" ? "orange-theme" : "black-theme";
+  const themeClass = lightMode === "light" ? "orange-theme" : "black-theme";
+  const buttonBgColor = lightMode === "light" ? "bg-orange-500" : "bg-black";
+  const buttonHoverColor = lightMode === "light" ? "hover:bg-orange-600" : "hover:bg-gray-800";
+
   return (
-    <div className="flex flex-col bg-[#202123] min-w-[260px]">
-      <div className="flex items-center justify-center h-[60px]">
+    <div className={`flex flex-col min-w-[260px] ${themeClass}`}>
+      <div className={`flex items-center justify-center h-[60px] ${themeClass}`}>
         <button
-          className="flex items-center w-[240px] h-[40px] rounded-lg bg-[#202123] border border-neutral-600 text-sm hover:bg-neutral-700"
+          className={`flex items-center w-[240px] h-[40px] rounded-lg ${buttonBgColor} border border-neutral-600 text-sm ${buttonHoverColor}`}
           onClick={onNewConversation}
         >
           <IconPlus
