@@ -47,6 +47,7 @@ export const ChatInput: FC<Props> = ({ onSend }) => {
   return (
     <div className="relative">
       <div className="absolute bottom-[-120px] w-full">
+      <div className="relative">
         <textarea
           ref={textareaRef}
           className="rounded-lg pl-4 pr-8 py-3 w-full focus:outline-none max-h-[280px] dark:bg-[#40414F] dark:border-opacity-50 dark:border-neutral-800 dark:text-neutral-100 border border-neutral-300 shadow text-neutral-900"
@@ -63,8 +64,9 @@ export const ChatInput: FC<Props> = ({ onSend }) => {
         >
           <IconSend size={18} />
         </button>
+        </div>
         <p className="text-center mt-2 text-sm text-blue-500">
-        Made by <a href="https://twitter.com/garyjokeeffe" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">Gary O&apos;Keeffe</a>
+        <a href="https://twitter.com/garyjokeeffe" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">Made by Gary O&apos;Keeffe</a>
       </p>
       </div>
     </div>
