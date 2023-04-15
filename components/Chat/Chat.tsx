@@ -28,7 +28,7 @@ export const Chat: FC<Props> = ({ model, messages, lightMode, loading, onSend, o
   }, [messages]);
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="flex flex-col h-full">
       {messages?.length === 0 ? (
         <>
           <div className="flex justify-center pt-8">
@@ -56,7 +56,7 @@ export const Chat: FC<Props> = ({ model, messages, lightMode, loading, onSend, o
         </>
       )}
 
-      <div className="h-[140px] w-[800px] mx-auto">
+      <div className="w-[800px] mx-auto flex-shrink-0">
         <ChatInput onSend={onSend} />
       </div>
     </div>
