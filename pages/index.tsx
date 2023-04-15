@@ -1,5 +1,4 @@
 import { Chat } from "@/components/Chat/Chat";
-import { Footer } from "@/components/Layout/Footer";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { Conversation, Message, OpenAIModel } from "@/types";
 import Head from "next/head";
@@ -163,8 +162,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={`h-screen ${lightMode === "light" ? "bg-white" : "bg-black"} relative`}>
-      <div className="flex flex-col h-full">
-        <div className="flex-1 flex items-stretch max-h-full overflow-y-auto">
+        <div className="flex items-stretch">
           <Sidebar
             conversations={conversations}
             selectedConversation={selectedConversation}
@@ -197,9 +195,6 @@ export default function Home() {
             />
           )}
         </div>
-      
-      <Footer lightMode={lightMode} />
-      </div>
       </div>
     </>
   );
