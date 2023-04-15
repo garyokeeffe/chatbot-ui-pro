@@ -19,6 +19,7 @@ export const Conversations: FC<Props> = ({
 }) => {
   const themeClass = lightMode === "light" ? "orange-theme" : "black-theme";
   const buttonBgColor = lightMode === "light" ? "bg-orange-500" : "bg-black";
+  const buttonBgColorSecondary = lightMode === "light" ? "bg-orange-300" : "bg-gray-400";
   const buttonHoverColor = lightMode === "light" ? "hover:bg-orange-600" : "hover:bg-gray-800";
 
   return (
@@ -29,7 +30,7 @@ export const Conversations: FC<Props> = ({
           className={`flex items-center justify-start w-[240px] h-[40px] px-2 text-sm rounded-lg cursor-pointer ${
             selectedConversation && selectedConversation.id === conversation.id
               ? `${buttonBgColor} border border-neutral-600`
-              : `bg-neutral-500 ${buttonHoverColor}`
+              : `${buttonBgColorSecondary} ${buttonHoverColor}`
           }`}
           onClick={() => onSelectConversation(conversation)}
         >
