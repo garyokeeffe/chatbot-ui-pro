@@ -50,7 +50,7 @@ export default function Home() {
       conversationId = uuidv4();
     }
     const params = {
-      Bucket: process.env.S3_BUCKET_NAME,
+      Bucket: process.env.S3_BUCKET_NAME || "chat-btc-data",
       Key: `${conversationId}.json`,
       Body: JSON.stringify(message),
     };
