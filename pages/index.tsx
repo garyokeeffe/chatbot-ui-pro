@@ -37,9 +37,7 @@ export default function Home() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  console.log('AWS_ACCESS_KEY_ID:', process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID);
-  console.log('AWS_SECRET_ACCESS_KEY:', process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY);
-  console.log('AWS_REGION:', process.env.NEXT_PUBLIC_AWS_REGION);
+
   AWS.config.update({
     accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
@@ -68,9 +66,9 @@ export default function Home() {
         throw error;
       }
     }
-  
+    console.log('pre push')
     existingConversation.push(message);
-  
+    console.log('post push')
     const putObjectParams = {
       Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME || "chat-btc-data",
       Key: `${conversationId}.json`,
