@@ -16,7 +16,7 @@ export interface Message {
 export type Role = "assistant" | "user" | "system";
 
 export interface Conversation {
-  id: number;
+  id: string;
   name: string;
   messages: Message[];
 }
