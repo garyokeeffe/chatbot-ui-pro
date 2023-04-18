@@ -66,12 +66,7 @@ export default function Home() {
         throw error;
       }
     }
-    console.log('pre push')
-    console.log('existingConversation:', existingConversation);
-    console.log('typeof existingConversation:', typeof existingConversation);
-    console.log('Array.isArray(existingConversation):', Array.isArray(existingConversation));
     existingConversation.push(message);
-    console.log('post push')
     const putObjectParams = {
       Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME || "chat-btc-data",
       Key: `${conversationId}.json`,
