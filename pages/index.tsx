@@ -38,13 +38,13 @@ export default function Home() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   
-  console.log('AWS_ACCESS_KEY_ID:', process.env.AWS_ACCESS_KEY_ID);
-  console.log('AWS_SECRET_ACCESS_KEY:', process.env.AWS_SECRET_ACCESS_KEY);
-  console.log('AWS_REGION:', process.env.AWS_REGION);
+  console.log('AWS_ACCESS_KEY_ID:', process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID);
+  console.log('AWS_SECRET_ACCESS_KEY:', process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY);
+  console.log('AWS_REGION:', process.env.NEXT_PUBLIC_AWS_REGION);
   AWS.config.update({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    region: process.env.AWS_REGION
+    accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
+    region: process.env.NEXT_PUBLIC_AWS_REGION
   });
   const s3 = new AWS.S3();
   const logConversation = async (conversationId: string, message: Message) => {
@@ -53,7 +53,7 @@ export default function Home() {
       conversationId = uuidv4();
     }
     const params = {
-      Bucket: process.env.S3_BUCKET_NAME || "chat-btc-data",
+      Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME || "chat-btc-data",
       Key: `${conversationId}.json`,
       Body: JSON.stringify(message),
     };
