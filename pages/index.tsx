@@ -54,7 +54,7 @@ export default function Home() {
       JSON.stringify(updatedConversation)
     );
     setLoading(true);
-		logConversation(selectedConversation.id, message);
+		logConversation(selectedConversation.id.toString(), message);
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
@@ -80,7 +80,7 @@ export default function Home() {
       role: "assistant",
       content: data,
     };
-    logConversation(selectedConversation.id, assistantMessage);
+    logConversation(selectedConversation.id.toString(), assistantMessage);
     // Update the conversation with the assistant's message
     updatedConversation = {
       ...updatedConversation,
