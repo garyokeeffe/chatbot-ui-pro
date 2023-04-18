@@ -18,7 +18,7 @@ export const ChatMessage: FC<Props> = ({ message, lightMode }) => {
 
   return (
     <div
-      className={`flex justify-center px-[120px] py-[30px] whitespace-pre-wrap ${bgColor} ${textColor} ${borderColor}`}
+      className={`flex justify-center px-[30px] py-[30px] whitespace-pre-wrap ${bgColor} ${textColor} ${borderColor}`}
       style={{ overflowWrap: "anywhere" }}
     >
       <div className="w-[650px] flex">

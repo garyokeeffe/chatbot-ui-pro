@@ -38,7 +38,7 @@ export const Chat: FC<Props> = ({ model, messages, lightMode, loading, onSend, o
             />
           </div>
 
-          <div className="flex-1 text-4xl text-center text-neutral-300 pt-[280px]">satGPT</div>
+          <div className="flex-1 text-4xl text-center text-neutral-300 pt-[100px]">satGPT</div>
         </>
       ) : (
         <>
