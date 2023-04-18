@@ -51,7 +51,7 @@ export default function Home() {
     }
   
     const getObjectParams = {
-      Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
+      Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME || "chat-btc-data",
       Key: `${conversationId}.json`,
     };
   
