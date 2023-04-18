@@ -38,9 +38,6 @@ export default function Home() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   
-  console.log('AWS_ACCESS_KEY_ID:', process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID);
-  console.log('AWS_SECRET_ACCESS_KEY:', process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY);
-  console.log('AWS_REGION:', process.env.NEXT_PUBLIC_AWS_REGION);
   AWS.config.update({
     accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
@@ -52,14 +49,35 @@ export default function Home() {
     if (!conversationId) {
       conversationId = uuidv4();
     }
-    const params = {
-      Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME || "chat-btc-data",
+  
+    const getObjectParams = {
+      Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
       Key: `${conversationId}.json`,
-      Body: JSON.stringify(message),
     };
-    await s3.putObject(params).promise();
-    console.log(`[${conversationId}] ${message.role}: ${message.content}`);
+  
+    let existingConversation: Message[] = [];
+  
+    try {
+      const data = await s3.getObject(getObjectParams).promise();
+      existingConversation = JSON.parse(data.Body.toString());
+    } catch (error) {
+      if (error.code !== 'NoSuchKey') {
+        console.error('Error reading existing conversation:', error);
+        throw error;
+      }
+    }
+  
+    existingConversation.push(message);
+  
+    const putObjectParams = {
+      Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
+      Key: `${conversationId}.json`,
+      Body: JSON.stringify(existingConversation),
+    };
+  
+    await s3.putObject(putObjectParams).promise();
   };
+  
 
 	const handleSend = async (message: Message) => {
   if (selectedConversation) {
