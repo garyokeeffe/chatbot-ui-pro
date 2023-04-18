@@ -36,6 +36,10 @@ export default function Home() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   
+  const logConversation = (conversationId: string, message: Message) => {
+    // You can use any logging mechanism you prefer, such as writing to a file, sending to an API, or storing in a database.
+    console.log(`[${conversationId}] ${message.role}: ${message.content}`);
+  };
 
 	const handleSend = async (message: Message) => {
   if (selectedConversation) {
@@ -50,7 +54,7 @@ export default function Home() {
       JSON.stringify(updatedConversation)
     );
     setLoading(true);
-		
+		logConversation(selectedConversation.id, message);
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
@@ -76,7 +80,7 @@ export default function Home() {
       role: "assistant",
       content: data,
     };
-
+    logConversation(selectedConversation.id, assistantMessage);
     // Update the conversation with the assistant's message
     updatedConversation = {
       ...updatedConversation,
