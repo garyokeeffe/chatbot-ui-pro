@@ -1,6 +1,8 @@
 import { Chat } from "@/components/Chat/Chat";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { Conversation, Message, OpenAIModel } from "@/types";
+import { v4 as uuidv4 } from 'uuid';
+import AWS from 'aws-sdk';
 import Head from "next/head";
 import { useEffect, useState } from "react";
 
@@ -36,8 +38,23 @@ export default function Home() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   
-  const logConversation = (conversationId: string, message: Message) => {
+  AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION
+  });
+  const s3 = new AWS.S3();
+  const logConversation = async (conversationId: string, message: Message) => {
     // You can use any logging mechanism you prefer, such as writing to a file, sending to an API, or storing in a database.
+    if (!conversationId) {
+      conversationId = uuidv4();
+    }
+    const params = {
+      Bucket: process.env.S3_BUCKET_NAME,
+      Key: `${conversationId}.json`,
+      Body: JSON.stringify(message),
+    };
+    await s3.putObject(params).promise();
     console.log(`[${conversationId}] ${message.role}: ${message.content}`);
   };
 
@@ -129,7 +146,7 @@ export default function Home() {
   };
 
   const newConversation: Conversation = {
-    id: conversations.length + 1,
+    id: uuidv4(),
     name: "",
     messages: [systemPrompt],
   };
