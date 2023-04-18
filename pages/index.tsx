@@ -59,7 +59,7 @@ export default function Home() {
   
     try {
       const data = await s3.getObject(getObjectParams).promise();
-      existingConversation = JSON.parse(data.Body.toString());
+      existingConversation = JSON.parse(data.Body?.toString() || "[]");
     } catch (error) {
       if (error.code !== 'NoSuchKey') {
         console.error('Error reading existing conversation:', error);
