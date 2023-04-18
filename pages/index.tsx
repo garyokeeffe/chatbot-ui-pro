@@ -25,6 +25,17 @@ export default function Home() {
 	const [loading, setLoading] = useState<boolean>(false);
 	const [model, setModel] = useState<OpenAIModel>(OpenAIModel.GPT_3_5);
 	const [lightMode, setLightMode] = useState<"dark" | "light">("dark");
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
 
 	const handleSend = async (message: Message) => {
   if (selectedConversation) {
@@ -162,7 +173,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={`h-screen ${lightMode === "light" ? "bg-white" : "bg-black"} relative`}>
-        <div className="flex items-stretch">
+        <div className={`flex ${isMobile ? 'flex-col' : 'items-stretch'}`}>
           <Sidebar
             conversations={conversations}
             selectedConversation={selectedConversation}
