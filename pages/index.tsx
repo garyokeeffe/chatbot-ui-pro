@@ -70,7 +70,7 @@ export default function Home() {
     existingConversation.push(message);
   
     const putObjectParams = {
-      Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
+      Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME || "chat-btc-data",
       Key: `${conversationId}.json`,
       Body: JSON.stringify(existingConversation),
     };
