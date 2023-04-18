@@ -67,6 +67,9 @@ export default function Home() {
       }
     }
     console.log('pre push')
+    console.log('existingConversation:', existingConversation);
+    console.log('typeof existingConversation:', typeof existingConversation);
+    console.log('Array.isArray(existingConversation):', Array.isArray(existingConversation));
     existingConversation.push(message);
     console.log('post push')
     const putObjectParams = {
