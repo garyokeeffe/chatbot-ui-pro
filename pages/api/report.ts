@@ -25,10 +25,10 @@ const logFeedback = async (conversationId: string, messageIndex: number, feedbac
     };
   
     await s3.putObject(putObjectParams).promise();
-  };
+};
   
 
-  export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
       const { conversationId, messageIndex, feedback } = req.body;
   
@@ -43,6 +43,5 @@ const logFeedback = async (conversationId: string, messageIndex: number, feedbac
         res.setHeader('Allow', 'POST');
         res.status(405).json({ status: 'error', message: 'Method Not Allowed' });
       }
-      
-  };
-  
+      ;
+};
