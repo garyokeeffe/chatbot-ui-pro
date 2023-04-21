@@ -38,10 +38,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       console.error('Failed to save feedback:', error);
       res.status(500).json({ status: 'error', message: 'Failed to save feedback' });
     }
-    // Move the 'else' statement inside the curly braces
-    else {
-      res.setHeader('Allow', 'POST');
-      res.status(405).json({ status: 'error', message: 'Method Not Allowed' });
-    }
+  } else { // Move the 'else' statement to the same level as the 'if' statement
+    res.setHeader('Allow', 'POST');
+    res.status(405).json({ status: 'error', message: 'Method Not Allowed' });
   }
 };
+
