@@ -9,7 +9,6 @@ interface Props {
   model: OpenAIModel;
   conversation: Conversation;
   lightMode: "light" | "dark";
-  onModelChange: (model: OpenAIModel) => void;
   onSelect: (conversation: Conversation) => void;
   messages: Message[];
   loading: boolean;

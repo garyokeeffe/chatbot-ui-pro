@@ -242,7 +242,7 @@ export default function Home() {
               onSend={handleSend}
               onSelect={() => {}}
               loading={loading}
-              onModelChange={(model: OpenAIModel) => setModel(model)}
+              onModelSelect={(model: OpenAIModel) => setModel(model)}
             />
           )}
         </div>
