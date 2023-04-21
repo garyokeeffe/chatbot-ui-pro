@@ -1,14 +1,13 @@
-import { Message } from "@/types";
+import { Message, Conversation } from "@/types";
 import { FC } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props {
   message: Message;
   lightMode: "light" | "dark";
+  conversation: Conversation; // Add conversation prop
+  index: number; 
 }
-const handleFeedback = async (messageIndex: number, feedback: 'good' | 'bad') => {
-  const updatedConversation = { ...conversation };
-  updatedConversation.messages[messageIndex].feedback = feedback;
 
   // Update the conversation state and localStorage
   onSelect(updatedConversation);
@@ -33,6 +32,9 @@ const handleFeedback = async (messageIndex: number, feedback: 'good' | 'bad') =>
 };
 
 export const ChatMessage: FC<Props> = ({ message, lightMode }) => {
+  const handleFeedback = async (messageIndex: number, feedback: 'good' | 'bad') => {
+    const updatedConversation = { ...conversation };
+    updatedConversation.messages[messageIndex].feedback = feedback;
   const isAssistant = message.role === "assistant";
   const bgColor = isAssistant
     ? lightMode === "light" ? "bg-neutral-100" : "bg-black"
