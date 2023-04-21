@@ -1,6 +1,8 @@
 import { Message, Conversation } from "@/types";
 import { FC } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+
 
 interface Props {
   message: Message;
