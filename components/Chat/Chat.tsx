@@ -16,6 +16,7 @@ interface Props {
   onSelect: (model: OpenAIModel) => void;
 }
 
+
 export const Chat: FC<Props> = ({ model, messages, lightMode, loading, onSend, onSelect }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 

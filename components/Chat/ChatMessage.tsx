@@ -5,6 +5,31 @@ interface Props {
   message: Message;
   lightMode: "light" | "dark";
 }
+const handleFeedback = async (messageIndex: number, feedback: 'good' | 'bad') => {
+  const updatedConversation = { ...conversation };
+  updatedConversation.messages[messageIndex].feedback = feedback;
+
+  // Update the conversation state and localStorage
+  onSelect(updatedConversation);
+
+  try {
+    const response = await fetch('/api/report', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        conversationId: updatedConversation.id,
+        messageIndex,
+        feedback,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+  } catch (error) {
+    console.error('Failed to send feedback:', error);
+  }
+};
 
 export const ChatMessage: FC<Props> = ({ message, lightMode }) => {
   const isAssistant = message.role === "assistant";
@@ -25,6 +50,20 @@ export const ChatMessage: FC<Props> = ({ message, lightMode }) => {
         <div className="mr-4 font-bold min-w-[40px]">{isAssistant ? "AI:" : "You:"}</div>
 
         <div className="whitespace-pre-wrap">{message.content}</div>
+        {message.role === 'assistant' && (
+        <div className="flex items-center">
+          <FontAwesomeIcon
+            icon={faThumbsUp}
+            className="mx-1 text-green-500 cursor-pointer"
+            onClick={() => handleFeedback(index, 'good')}
+          />
+          <FontAwesomeIcon
+            icon={faThumbsDown}
+            className="mx-1 text-red-500 cursor-pointer"
+            onClick={() => handleFeedback(index, 'bad')}
+          />
+        </div>
+      )}
       </div>
     </div>
   );

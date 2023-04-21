@@ -11,6 +11,7 @@ export const OpenAIModelNames: Record<OpenAIModel, string> = {
 export interface Message {
   role: Role;
   content: string;
+  feedback?: 'good' | 'bad';
 }
 
 export type Role = "assistant" | "user" | "system";
