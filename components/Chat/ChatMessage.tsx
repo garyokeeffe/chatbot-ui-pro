@@ -72,13 +72,20 @@ export const ChatMessage: FC<Props> = ({
 
         <div className="whitespace-pre-wrap">{message.content}</div>
         {message.role === "assistant" && (
-          <div className="flex items-center px-[30px] min-w-[40px]">
-            <FontAwesomeIcon
-              icon={faThumbsDown}
-              size="2x"
-              onClick={() => handleFeedback(index, "bad")}
-            />
-          </div>
+         <div className="flex items-center px-[30px] min-w-[40px]">
+         <div className="icon-container">
+           <FontAwesomeIcon
+             icon={faThumbsUp}
+             onClick={() => handleFeedback(index, "good")}
+           />
+         </div>
+         <div className="icon-container">
+           <FontAwesomeIcon
+             icon={faThumbsDown}
+             onClick={() => handleFeedback(index, "bad")}
+           />
+         </div>
+       </div>
         )}
       </div>
     </div>

@@ -12,3 +12,11 @@
   background-color: black;
   color: orange;
 }
+
+.icon-container {
+  width: 24px; /* Adjust this value to set the desired icon size */
+  height: 24px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
