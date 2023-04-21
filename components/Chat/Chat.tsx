@@ -40,7 +40,8 @@ export const Chat: FC<Props> = ({
       {messages?.length === 0 ? (
         <>
           <div className="flex justify-center pt-8">
-            <ModelSelect model={model} onSelect={onSelect} />
+          <ModelSelect model={model} onModelSelect={(selectedModel) => onModelChange(selectedModel)} />
+
           </div>
 
           <div className="flex-1 text-4xl text-center text-neutral-300 pt-[100px]">
