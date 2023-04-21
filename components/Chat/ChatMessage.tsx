@@ -46,7 +46,7 @@ export const ChatMessage: FC<Props> = ({
       console.error("Failed to send feedback:", error);
     }
   };
-  const [clickedIcon, setClickedIcon] = useState(null);
+  const [clickedIcon, setClickedIcon] = useState<"good" | "bad" | null>(null);
   const isAssistant = message.role === "assistant";
   const bgColor = isAssistant
     ? lightMode === "light"
