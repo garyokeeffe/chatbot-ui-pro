@@ -72,7 +72,7 @@ export const ChatMessage: FC<Props> = ({
 
         <div className="whitespace-pre-wrap">{message.content}</div>
         {message.role === "assistant" && (
-          <div className="whitespace-pre-wrap items-center px-[30px] min-w-[40px]">
+          <div className="items-center px-[30px] min-w-[40px]">
             <FontAwesomeIcon
               icon={faThumbsDown}
               size="xs"
