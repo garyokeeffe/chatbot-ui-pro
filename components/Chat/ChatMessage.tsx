@@ -2,6 +2,9 @@ import { Message, Conversation } from "@/types";
 import { FC } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import { useState } from 'react';
+
+
 
 interface Props {
   message: Message;
@@ -24,7 +27,7 @@ export const ChatMessage: FC<Props> = ({
 
     // Update the conversation state and localStorage
     onSelect(updatedConversation);
-
+    setClickedIcon(feedback);
     try {
       const response = await fetch("/api/report", {
         method: "POST",
@@ -43,7 +46,7 @@ export const ChatMessage: FC<Props> = ({
       console.error("Failed to send feedback:", error);
     }
   };
-
+  const [clickedIcon, setClickedIcon] = useState(null);
   const isAssistant = message.role === "assistant";
   const bgColor = isAssistant
     ? lightMode === "light"
@@ -77,6 +80,8 @@ export const ChatMessage: FC<Props> = ({
            <FontAwesomeIcon
              icon={faThumbsDown}
              onClick={() => handleFeedback(index, "bad")}
+             className={clickedIcon === 'bad' ? 'text-red-500' : ''}
+             disabled={clickedIcon !== null}
            />
          </div>
        </div>
