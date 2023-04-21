@@ -13,7 +13,7 @@ interface Props {
   messages: Message[];
   loading: boolean;
   onSend: (message: Message) => void;
-  onSelect: (model: OpenAIModel) => void;
+  onSelect: (updatedConversation: Conversation) => void;
 }
 
 export const Chat: FC<Props> = ({
