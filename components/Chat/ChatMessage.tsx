@@ -67,7 +67,7 @@ export const ChatMessage: FC<Props> = ({
       className={`flex justify-center px-[30px] py-[30px] whitespace-pre-wrap ${bgColor} ${textColor} ${borderColor}`}
       style={{ overflowWrap: "anywhere" }}
     >
-      <div className="w-[650px] flex">
+      <div className="w-[750px] flex">
         <div className="mr-4 font-bold min-w-[40px]">{isAssistant ? "AI:" : "You:"}</div>
 
         <div className="whitespace-pre-wrap">{message.content}</div>
@@ -75,12 +75,12 @@ export const ChatMessage: FC<Props> = ({
           <div className="flex items-center">
             <FontAwesomeIcon
               icon={faThumbsUp}
-              className="mx-1 text-green-500 cursor-pointer"
+              size="sm"
               onClick={() => handleFeedback(index, "good")}
             />
             <FontAwesomeIcon
               icon={faThumbsDown}
-              className="mx-1 text-red-500 cursor-pointer"
+              size="sm"
               onClick={() => handleFeedback(index, "bad")}
             />
           </div>
