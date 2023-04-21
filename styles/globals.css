@@ -39,6 +39,12 @@
   align-items: center;
   transition: transform 0.3s; /* Ensure a smooth transition between jiggles */
 }
+.icon-fixed-size {
+  width: 24px; /* Set the desired width */
+  height: 24px; /* Set the desired height */
+  min-width: 24px;
+  min-height: 24px;
+}
 
 .icon-container:hover {
   animation: jiggle 0.3s linear infinite;
