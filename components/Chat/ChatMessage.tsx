@@ -80,8 +80,9 @@ export const ChatMessage: FC<Props> = ({
            <FontAwesomeIcon
              icon={faThumbsDown}
              onClick={() => handleFeedback(index, "bad")}
-             className={clickedIcon === 'bad' ? 'text-red-500' : ''}
-             disabled={clickedIcon !== null}
+             className={`${
+              clickedIcon === "bad" ? "text-red-500" : ""
+            } ${clickedIcon !== null ? "pointer-events-none" : ""}`}
            />
          </div>
        </div>
