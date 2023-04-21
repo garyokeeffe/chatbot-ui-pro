@@ -1,5 +1,6 @@
 import { Message } from "@/types";
 import { FC } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props {
   message: Message;
