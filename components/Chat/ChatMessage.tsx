@@ -75,7 +75,7 @@ export const ChatMessage: FC<Props> = ({
           <div className="flex items-center px-[30px] min-w-[40px]">
             <FontAwesomeIcon
               icon={faThumbsDown}
-              size="sm"
+              size="2x"
               onClick={() => handleFeedback(index, "bad")}
             />
           </div>
