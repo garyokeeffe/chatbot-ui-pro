@@ -9,7 +9,6 @@ interface Props {
   model: OpenAIModel;
   conversation: Conversation;
   lightMode: "light" | "dark";
-  onModelChange: (model: OpenAIModel) => void;
   messages: Message[];
   loading: boolean;
   onSend: (message: Message) => void;
@@ -40,7 +39,7 @@ export const Chat: FC<Props> = ({
       {messages?.length === 0 ? (
         <>
           <div className="flex justify-center pt-8">
-          <ModelSelect model={model} onModelSelect={(selectedModel) => onModelChange(selectedModel)} />
+          <ModelSelect model={model} onModelSelect={(selectedModel)} />
 
           </div>
 
