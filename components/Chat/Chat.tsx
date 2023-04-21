@@ -16,8 +16,15 @@ interface Props {
   onSelect: (model: OpenAIModel) => void;
 }
 
-
-export const Chat: FC<Props> = ({ model, messages, lightMode, loading, onSend, onSelect }) => {
+export const Chat: FC<Props> = ({
+  model,
+  messages,
+  lightMode,
+  loading,
+  onSend,
+  onSelect,
+  conversation,
+}) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -33,22 +40,29 @@ export const Chat: FC<Props> = ({ model, messages, lightMode, loading, onSend, o
       {messages?.length === 0 ? (
         <>
           <div className="flex justify-center pt-8">
-            <ModelSelect
-              model={model}
-              onSelect={onSelect}
-            />
+            <ModelSelect model={model} onSelect={onSelect} />
           </div>
 
-          <div className="flex-1 text-4xl text-center text-neutral-300 pt-[100px]">satGPT</div>
+          <div className="flex-1 text-4xl text-center text-neutral-300 pt-[100px]">
+            satGPT
+          </div>
         </>
       ) : (
         <>
           <div className="flex-1 overflow-auto flex-grow">
-            <div className="text-center py-3 dark:bg-black dark:text-white text-neutral-500 text-sm border border-b-neutral-300 dark:border-none">AI: {OpenAIModelNames[model]}</div>
+            <div className="text-center py-3 dark:bg-black dark:text-white text-neutral-500 text-sm border border-b-neutral-300 dark:border-none">
+              AI: {OpenAIModelNames[model]}
+            </div>
 
             {messages?.map((message, index) => (
               <div key={index}>
-                <ChatMessage message={message} lightMode={lightMode} />
+                <ChatMessage
+                  message={message}
+                  lightMode={lightMode}
+                  conversation={conversation}
+                  index={index}
+                  onSelect={onSelect}
+                />
               </div>
             ))}
             {loading && <ChatLoader />}
