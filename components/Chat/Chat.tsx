@@ -10,13 +10,14 @@ interface Props {
   conversation: Conversation;
   lightMode: "light" | "dark";
   onModelChange: (model: OpenAIModel) => void;
+  onSelect: (conversation: Conversation) => void;
   messages: Message[];
   loading: boolean;
   onSend: (message: Message) => void;
   onModelSelect: (model: OpenAIModel) => void;
 }
 
-export const Chat: FC<Props> = ({ model, messages, lightMode, loading, onSend, onModelSelect }) => {
+export const Chat: FC<Props> = ({ model, messages, lightMode, loading, onSend, onSelect, onModelSelect }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -47,7 +48,7 @@ export const Chat: FC<Props> = ({ model, messages, lightMode, loading, onSend, o
 
             {messages?.map((message, index) => (
               <div key={index}>
-                <ChatMessage message={message} lightMode={lightMode} />
+                <ChatMessage message={message} lightMode={lightMode} onSelect={onSelect} />
               </div>
             ))}
             {loading && <ChatLoader />}
