@@ -240,6 +240,7 @@ export default function Home() {
       />
     </div>
     {selectedConversation && (
+      <div className="chat-container">
       <Chat
         conversation={selectedConversation}
         lightMode={lightMode}
@@ -250,6 +251,7 @@ export default function Home() {
         loading={loading}
         onModelSelect={(model: OpenAIModel) => setModel(model)}
       />
+      </div>
     )}
   </div>
 </div>

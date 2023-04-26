@@ -50,3 +50,10 @@
   animation: jiggle 0.3s linear infinite;
 }
 
+.chat-container {
+  max-height: 100vh; /* Limit the height of the container to the height of the viewport */
+  overflow-y: auto; /* Enable vertical scrolling if the content overflows */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
