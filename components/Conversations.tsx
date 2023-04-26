@@ -23,7 +23,7 @@ export const Conversations: FC<Props> = ({
   const buttonHoverColor = lightMode === "light" ? "hover:bg-orange-600" : "hover:bg-gray-900";
 
   return (
-    <div className={`flex flex-col space-y-2 ${themeClass}`} style = "height:100%">
+    <div className={`flex flex-col space-y-2 ${themeClass}`} style = {{height: '100%'}}>
       {conversations.map((conversation, index) => (
         <div
           key={index}
