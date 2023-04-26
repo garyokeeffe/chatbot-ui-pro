@@ -213,40 +213,51 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={`h-screen ${lightMode === "light" ? "bg-white" : "bg-black"} relative`}>
-        <div className={`flex ${isMobile ? 'flex-col' : 'items-stretch'}`}>
-          <Sidebar
-            conversations={conversations}
-            selectedConversation={selectedConversation}
-            onNewConversation={handleNewConversation}
-            onSelectConversation={(conversation: Conversation) => {
-              setSelectedConversation(conversation);
-              safeLocalStorage("set", "selectedConversation", JSON.stringify(conversation));
-            }}
-            onToggleLightMode={handleLightMode}
-            onDeleteConversation={(conversation: Conversation) => {
-              const updatedConversations = [...conversations];
-              const index = updatedConversations.findIndex(c => c.id === conversation.id);
-              updatedConversations.splice(index, 1);
-              setConversations(updatedConversations);
-              safeLocalStorage('set', 'conversationHistory', JSON.stringify(updatedConversations));
-              setSelectedConversation(undefined);
-            }}
-            lightMode={lightMode}
-          />
-          {selectedConversation && (
-            <Chat
-              conversation={selectedConversation}
-              lightMode={lightMode}
-              model={model}
-              messages={selectedConversation.messages.filter((message) => message.role !== "system")}
-              onSend={handleSend}
-              onSelect={() => {}}
-              loading={loading}
-              onModelSelect={(model: OpenAIModel) => setModel(model)}
-            />
-          )}
-        </div>
-      </div>
+  <div className={`flex ${isMobile ? 'flex-col' : 'items-stretch h-full'}`}>
+    <Sidebar
+      conversations={conversations}
+      selectedConversation={selectedConversation}
+      onNewConversation={handleNewConversation}
+      onSelectConversation={(conversation: Conversation) => {
+        setSelectedConversation(conversation);
+        safeLocalStorage("set", "selectedConversation", JSON.stringify(conversation));
+      }}
+      onToggleLightMode={handleLightMode}
+      onDeleteConversation={(conversation: Conversation) => {
+        const updatedConversations = [...conversations];
+        const index = updatedConversations.findIndex(c => c.id === conversation.id);
+        updatedConversations.splice(index, 1);
+        setConversations(updatedConversations);
+        safeLocalStorage('set', 'conversationHistory', JSON.stringify(updatedConversations));
+        setSelectedConversation(undefined);
+      }}
+      lightMode={lightMode}
+      style={{
+        flexGrow: isMobile ? 0 : 1,
+        flexBasis: isMobile ? '20%' : '100%',
+        minHeight: isMobile ? '20%' : '100%',
+      }}
+    />
+    {selectedConversation && (
+      <Chat
+        conversation={selectedConversation}
+        lightMode={lightMode}
+        model={model}
+        messages={selectedConversation.messages.filter((message) => message.role !== "system")}
+        onSend={handleSend}
+        onSelect={() => {}}
+        loading={loading}
+        onModelSelect={(model: OpenAIModel) => setModel(model)}
+        style={{
+          flexGrow: 1,
+          flexBasis: isMobile ? '80%' : '100%',
+          minHeight: isMobile ? '80%' : '100%',
+        }}
+      />
+    )}
+  </div>
+</div>
+
     </>
   );
   
